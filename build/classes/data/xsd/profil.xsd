@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XmlSchema.xsd to edit this template
+-->
+
+<xs:schema
+	version="1.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://myGame/tux"
+	xmlns:tux="http://myGame/tux"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="dico.xsd"/>
+
+	<!-- Racine profil -->
+	<xs:element name="profil" type="tux:Profil"/>
+    
+	<!-- Type complexe Profil -->
+	<xs:complexType name="Profil">
+		<xs:sequence>
+			<xs:element name="nom" type="xs:string"/>
+			<xs:element name="avatar" type="xs:string"/>	<!-- element avatar devrait etre de type Avatar --> 
+			<xs:element name="anniversaire" type="xs:date"/> 
+			<xs:element name="parties" type="tux:Parties"/> 
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Type simple Avatar -->
+	<!-- [!] Regex non valide
+
+	<xs:simpleType name="Avatar">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="*.(png|jpg)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	-->
+
+	<!-- Type complexe Parties -->
+	<xs:complexType name="Parties">
+		<xs:sequence>
+			<xs:element name="partie" type="tux:Partie" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Type complexe etendu Partie avec base PartieBase -->
+	<xs:complexType name="Partie">
+		<xs:complexContent>
+			<xs:extension base="tux:PartieBase">
+				<xs:attribute name="trouvé" type="tux:Trouvé"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<!-- Type complexe PartieBase -->
+	<xs:complexType name="PartieBase">
+		<xs:sequence>
+			<xs:element name="temps" type="xs:double" minOccurs="0"/>
+			<xs:element name="mot" type="tux:Mot"/>
+		</xs:sequence>
+		<xs:attribute name="date" type="xs:date"/>
+	</xs:complexType>
+
+	<!-- Type simple trouvé -->
+	<xs:simpleType name="Trouvé">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{2}\%"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

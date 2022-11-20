@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionnaire 
+	xmlns="http://myGame/tux" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://myGame/tux ../xsd/dico.xsd">
+
+	<!-- 3 à 4 lettres-->
+	<mot niveau="1">oui</mot>
+	<mot niveau="1">non</mot>
+	<mot niveau="1">papa</mot>
+	<mot niveau="1">riz</mot>
+	<mot niveau="1">loup</mot>
+	<mot niveau="1">ami</mot>
+	<mot niveau="1">porc</mot>
+	<mot niveau="1">roi</mot>
+	<mot niveau="1">bleu</mot>
+	<mot niveau="1">saut</mot>
+	<mot niveau="1">huit</mot>
+
+	<!-- 5 lettres-->
+	<mot niveau="2">reine</mot>
+	<mot niveau="2">rouge</mot>
+	<mot niveau="2">lisse</mot>
+	<mot niveau="2">chaud</mot>
+	<mot niveau="2">vaste</mot>
+	<mot niveau="2">poilu</mot>
+	<mot niveau="2">jeune</mot>
+	<mot niveau="2">tenir</mot>
+	<mot niveau="2">cadre</mot>
+	<mot niveau="2">folie</mot>
+	<mot niveau="2">blanc</mot>
+
+	<!-- 6 lettres-->
+	<mot niveau="3">cheval</mot>
+	<mot niveau="3">violet</mot>
+	<mot niveau="3">griffe</mot>
+	<mot niveau="3">alcool</mot>
+	<mot niveau="3">floral</mot>
+	<mot niveau="3">sexuel</mot>
+	<mot niveau="3">foudre</mot>
+	<mot niveau="3">ballon</mot>
+	<mot niveau="3">saisir</mot>
+	<mot niveau="3">chaque</mot>
+	<mot niveau="3">vierge</mot>
+
+	<!-- 7 lettres-->
+	<mot niveau="4">baleine</mot>
+	<mot niveau="4">carotte</mot>
+	<mot niveau="4">nouveau</mot>
+	<mot niveau="4">central</mot>
+	<mot niveau="4">fusible</mot>
+	<mot niveau="4">glacier</mot>
+	<mot niveau="4">abeille</mot>
+	<mot niveau="4">insecte</mot>
+	<mot niveau="4">hôpital</mot>
+	<mot niveau="4">mélodie</mot>
+	<mot niveau="4">absurde</mot>
+
+	<!-- 8 lettres et plus -->
+	<mot niveau="5">aquarium</mot>
+	<mot niveau="5">portrait</mot>
+	<mot niveau="5">pragmatique</mot>
+	<mot niveau="5">régional</mot>
+	<mot niveau="5">déboguer</mot>
+	<mot niveau="5">chercher</mot>
+	<mot niveau="5">analytique</mot>
+	<mot niveau="5">établissement</mot>
+	<mot niveau="5">université</mot>
+	<mot niveau="5">événement</mot>
+	<mot niveau="5">dépression</mot>
+	<mot niveau="5">arc-en-ciel</mot>
+</dictionnaire>
