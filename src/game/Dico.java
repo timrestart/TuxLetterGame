@@ -102,10 +102,10 @@ public class Dico {
 	}
 
 	private String getMotDepuisListe(ArrayList<String> liste) {
-		int ran = (int) (Math.random() * (liste.size() - 1));
+		int randIndex = (int) (Math.random() * (liste.size() - 1));
 		String mot = "???";
 		if (!liste.isEmpty()) {
-			mot = liste.get(ran);
+			mot = liste.get(randIndex);
 		}
 		return mot;
 	}

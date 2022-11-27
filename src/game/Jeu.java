@@ -5,12 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import org.xml.sax.SAXException;
 
-public class Jeu {
+public abstract class Jeu {
 
 	private Env env;
 	private Room room;
 	private Profil profil;
-	private ArrayList<Letter> letters;
+	private Tux tux;
+	protected ArrayList<Letter> letters;
 	private Dico dico;
 
 	public Jeu() throws SAXException, IOException {
@@ -30,6 +31,9 @@ public class Jeu {
 		// Instancie un profil par défaut
 		profil = new Profil();
 
+		// Instancie un Tux
+		tux = new Tux(env, room); //??
+
 		//Instancier une liste de lettres
 		letters = new ArrayList<Letter>();
 
@@ -38,9 +42,16 @@ public class Jeu {
 	}
 
 	public void execute() {
-		// pour l'instant, nous nous contentons d'appeler la méthode joue comme cela
-		// et nous créons une partie vide, juste pour que cela fonctionne
-		joue(new Partie());
+
+		// Charger un mot au hasard depuis le dictionnaire
+		int niv = 2;
+		String mot = dico.getMotDepuisListeNiveau(niv);
+
+		// instancier une nouvelle partie
+		Partie p = new Partie("2022-11-27", niv, mot);
+
+		// jouer la partie
+		joue(p);
 
 		// Détruit l'environnement et provoque la sortie du programme 
 		env.exit();
@@ -50,20 +61,16 @@ public class Jeu {
 		// TEMPORAIRE : on règle la room de l'environnement. Ceci sera à enlever lorsque vous ajouterez les menus.
 		env.setRoom(room);
 
-		// Instancie un Tux
-		Tux tux = new Tux(env, room); //??
+		// Afficher tux dans l'environnement
 		env.addObject(tux);
 
-		// Charger un mot au hasard depuis le dictionnaire
-		String mot = dico.getMotDepuisListeNiveau(1);
-
-		// Initialise une liste de lettre du mot precedent
+		// Initialise une liste de lettre du mot
+		String mot = partie.getMot();
 		Letter letter;
 		for (int i = 0; i < mot.length(); i++) {
 			letter = new Letter(env, room, mot.charAt(i), (i + 1) * 10, 75);
 			letters.add(letter);
 		}
-
 		// Affiche ces letters dans l'environnement
 		for (int i = 0; i < letters.size(); i++) {
 			env.addObject(letters.get(i));
@@ -74,13 +81,13 @@ public class Jeu {
 
 		// Boucle de jeu
 		Boolean finished;
-		finished = false; //??
+		finished = false;
 		while (!finished) {
 
 			// Contrôles globaux du jeu (sortie, ...)
 			//1 is for escape key
-			if (env.getKey() == 1) {
-				finished = true; //??
+			if (env.getKey() == 1 || partie.getFini() == true) {
+				finished = true;
 			}
 
 			// Contrôles des déplacements de Tux (gauche, droite, ...)
@@ -97,15 +104,26 @@ public class Jeu {
 		terminePartie(partie);
 	}
 
-	protected void demarrePartie(Partie partie) {
+	protected abstract void demarrePartie(Partie partie);
 
+	protected abstract void appliqueRegles(Partie partie);
+
+	protected abstract void terminePartie(Partie partie);
+
+	protected double distance(Letter letter) {
+		double dist;
+		dist = Math.sqrt(
+				Math.pow(letter.getX() - tux.getX(), 2)
+				+ Math.pow(letter.getY() - tux.getY(), 2)
+				+ Math.pow(letter.getZ() - tux.getZ(), 2)
+		);
+		return dist;
 	}
 
-	protected void appliqueRegles(Partie partie) {
-
-	}
-
-	protected void terminePartie(Partie partie) {
-
+	protected Boolean collision(Letter letter) {
+		Boolean col;
+		//col = tux.getX() == letter.getX() && tux.getX() == letter.getX();
+		col = distance(letter) <= tux.getScale();
+		return col;
 	}
 }

@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Jeu.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/JeuDevineLeMotOrdre.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Chronometre.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Letter.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Dico.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Partie.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/LanceurDeJeu.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Profil.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Room.java</file>
+            <file>file:/home/trr/trr-study/l3-miage-5/fdd_xml/FDD_XML/TuxLetterGame/src/game/Tux.java</file>
+        </group>
     </open-files>
 </project-private>
