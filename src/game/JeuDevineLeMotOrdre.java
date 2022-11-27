@@ -15,7 +15,7 @@ public class JeuDevineLeMotOrdre extends Jeu {
 	@Override
 	protected void demarrePartie(Partie partie) {
 		// initialiser chrono
-		int limChrono = 5;
+		int limChrono = 20;
 		chrono = new Chronometre(limChrono);
 		chrono.start();
 		chrono.stop();
@@ -36,6 +36,7 @@ public class JeuDevineLeMotOrdre extends Jeu {
 			li = partie.getMot().length() - nbLettresRestantes;
 			if (li < partie.getMot().length() && tuxTrouveLettre(li)) {
 				System.out.println("Letter found");
+				env.removeObject(letters.get(li));
 				nbLettresRestantes = nbLettresRestantes - 1;
 			}
 			if (nbLettresRestantes == 0) {
@@ -48,13 +49,13 @@ public class JeuDevineLeMotOrdre extends Jeu {
 
 	@Override
 	protected void terminePartie(Partie partie) {
-		if (chrono.remainsTime()) {
+		if (!chrono.remainsTime()) {
+			partie.setTrouve(nbLettresRestantes);
+			System.out.println("Loss : " + partie.getMot() + " " + partie.getTrouve() + "%");
+		} else {
 			partie.setTemps(chrono.timeSpent());
 			partie.setTrouve(0);
-			System.out.println("Win : " + partie.getTemps() + "s et " + partie.getTrouve() + "%");
-		} else {
-			partie.setTrouve(nbLettresRestantes);
-			System.out.println("Loss : " + partie.getTrouve() + "%");
+			System.out.println("Win : " + partie.getMot() + " " + partie.getTemps() + "s et " + partie.getTrouve() + "%");
 		}
 	}
 

@@ -7,7 +7,7 @@ import org.xml.sax.SAXException;
 
 public abstract class Jeu {
 
-	private Env env;
+	protected Env env;
 	private Room room;
 	private Profil profil;
 	private Tux tux;
@@ -65,10 +65,20 @@ public abstract class Jeu {
 		env.addObject(tux);
 
 		// Initialise une liste de lettre du mot
+		// BUG: il faut trouver la bonne taille pour placer les lettres
 		String mot = partie.getMot();
 		Letter letter;
+		double xStart = 10.0;
+		double zStart = 10.0;
+		double xEnd = room.getWidth() * 0.9;
+		double zEnd = room.getDepth() * 0.9;
+		double randX;
+		double randZ;
 		for (int i = 0; i < mot.length(); i++) {
+			randX = Math.random() * (xEnd - xStart + 1) - xStart;
+			randZ = Math.random() * (zEnd - zStart + 1) - zStart;
 			letter = new Letter(env, room, mot.charAt(i), (i + 1) * 10, 75);
+			//letter = new Letter(env, room, mot.charAt(i), randX, randZ);
 			letters.add(letter);
 		}
 		// Affiche ces letters dans l'environnement
@@ -123,7 +133,7 @@ public abstract class Jeu {
 	protected Boolean collision(Letter letter) {
 		Boolean col;
 		//col = tux.getX() == letter.getX() && tux.getX() == letter.getX();
-		col = distance(letter) <= tux.getScale();
+		col = distance(letter) <= tux.getScale() * 1.4;
 		return col;
 	}
 }
