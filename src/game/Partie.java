@@ -50,6 +50,10 @@ public class Partie {
 		return mot;
 	}
 
+	public String getDate() {
+		return date;
+	}
+
 	@Override
 	public String toString() {
 		String s = "";

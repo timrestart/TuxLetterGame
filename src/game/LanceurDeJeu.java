@@ -5,7 +5,7 @@ import org.xml.sax.SAXException;
 
 public class LanceurDeJeu {
 
-	public static void main(String[] args) throws SAXException, IOException {
+	public static void main(String[] args) throws SAXException, IOException, InterruptedException {
 		Jeu jeu;
 		jeu = new JeuDevineLeMotOrdre();
 		jeu.execute();
